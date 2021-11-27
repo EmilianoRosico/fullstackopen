@@ -19,7 +19,7 @@ browser starts executing js-code
 that requests JSON data from server 
 end note
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
-server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+server-->browser: [{content: "test 123", date: "2021-11-27T08:48:21.467Z"},…]
 
 note over browser:
 browser executes the event handler
