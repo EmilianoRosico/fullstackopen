@@ -2,10 +2,10 @@ import React from "react";
 
 const Display = ({ counter, text }) => {
   return (
-    <div>
-      <span>{text}:</span>
-      {counter}
-    </div>
+    <tr>
+      <td>{text}</td>
+      <td>{counter}</td>
+    </tr>
   );
 };
 

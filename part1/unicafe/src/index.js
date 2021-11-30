@@ -3,23 +3,36 @@ import ReactDOM from 'react-dom'
 import Display from './Display'
 import Button from './Button'
 
-const Statistics = ({good,neutral,bad,all}) => {
-  let average = isNaN((good-bad)/all) ? 0:(good-bad)/all
-  let percentage = isNaN(good/all*100) ? 0:good/all*100
-  if (!good && !bad && !neutral){
+const tdStyle = {
+  color: 'blue',
+  fontWeight: 'bold',
+};
+
+const Statistics = ({ good, neutral, bad, all }) => {
+  let average = isNaN((good - bad) / all) ? 0 : (good - bad) / all
+  let percentage = isNaN(good / all * 100) ? 0 : good / all * 100
+  if (!good && !bad && !neutral) {
     return (
       <p>No Feedback given</p>
     )
   }
   return (
-    <>
-    <Display counter={good} text="Good"/>
-    <Display counter={neutral} text="Neutral" />
-    <Display counter={bad} text="Bad" />
-    <Display counter={all} text="Total answers" />
-    <Display counter={average} text="Average" />
-    <Display counter={percentage} text="Percentage" />
-    </>
+    <table>
+      <thead>
+        <tr>
+          <td style={tdStyle}>Feedback</td>
+          <td style={tdStyle}>Value</td>
+        </tr>
+      </thead>
+      <tbody>
+        <Display counter={good} text="Good" />
+        <Display counter={neutral} text="Neutral" />
+        <Display counter={bad} text="Bad" />
+        <Display counter={all} text="Total answers" />
+        <Display counter={average} text="Average" />
+        <Display counter={percentage} text="Percentage" />
+      </tbody>
+    </table>
   )
 }
 
@@ -27,7 +40,7 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  const [all,setAll] = useState(0)
+  const [all, setAll] = useState(0)
 
   const goodComment = () => {
     setGood(good + 1)
@@ -53,7 +66,7 @@ const App = () => {
       <Button
         handleClick={neutralComment}
         text='Neutral'
-      />     
+      />
       <Button
         handleClick={badComment}
         text='Bad'
