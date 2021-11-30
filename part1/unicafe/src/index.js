@@ -3,6 +3,21 @@ import ReactDOM from 'react-dom'
 import Display from './Display'
 import Button from './Button'
 
+const Statistics = ({good,neutral,bad,all}) => {
+  let average = isNaN((good-bad)/all) ? 0:(good-bad)/all
+  let percentage = isNaN(good/all*100) ? 0:good/all*100
+  return (
+    <>
+    <Display counter={good} text="Good"/>
+    <Display counter={neutral} text="Neutral" />
+    <Display counter={bad} text="Bad" />
+    <Display counter={all} text="Total answers" />
+    <Display counter={average} text="Average" />
+    <Display counter={percentage} text="Percentage" />
+    </>
+  )
+}
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -21,8 +36,7 @@ const App = () => {
     setBad(bad + 1)
     setAll(all + 1)
   }
-  let average = isNaN((good-bad)/all) ? 0:(good-bad)/all
-  let percentage = isNaN(good/all*100) ? 0:good/all*100
+
 
   return (
     <div>
@@ -40,12 +54,7 @@ const App = () => {
         text='Bad'
       />
       <h2>Statistic</h2>
-      <Display counter={good} text="Good"/>
-      <Display counter={neutral} text="Neutral" />
-      <Display counter={bad} text="Bad" />
-      <Display counter={all} text="Total answers" />
-      <Display counter={average} text="Average" />
-      <Display counter={percentage} text="Percentage" />
+      <Statistics good={good} neutral={neutral} bad={bad} all={all} />
 
     </div>
   )
