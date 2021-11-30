@@ -11,6 +11,8 @@ const App = () => {
   const goodComment = () => setGood(good + 1)
   const neutralComment = () => setNeutral(neutral + 1)
   const badComment = () => setBad(bad + 1)
+  let average = isNaN((good-bad)/(good+neutral+bad)) ? 0:(good-bad)/(good+neutral+bad)
+  let percentage = isNaN(good/(good+neutral+bad)*100) ? 0:good/(good+neutral+bad)*100
 
   return (
     <div>
@@ -30,7 +32,11 @@ const App = () => {
       <h2>Statistic</h2>
       <Display counter={good} text="Good"/>
       <Display counter={neutral} text="Neutral" />
-      <Display counter={bad} text="Bad" /> 
+      <Display counter={bad} text="Bad" />
+      <Display counter={good+neutral+bad} text="Total answers" />
+      <Display counter={average} text="Average" />
+      <Display counter={percentage} text="Percentage" />
+
     </div>
   )
 }
