@@ -6,6 +6,11 @@ import Button from './Button'
 const Statistics = ({good,neutral,bad,all}) => {
   let average = isNaN((good-bad)/all) ? 0:(good-bad)/all
   let percentage = isNaN(good/all*100) ? 0:good/all*100
+  if (!good && !bad && !neutral){
+    return (
+      <p>No Feedback given</p>
+    )
+  }
   return (
     <>
     <Display counter={good} text="Good"/>
