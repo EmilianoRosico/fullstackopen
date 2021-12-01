@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import Button from "./Button"
+import Display from './Display'
 
 const App = ({anecdotes}) => {
   //useState declaration
@@ -18,18 +19,19 @@ const App = ({anecdotes}) => {
   setVote(a)
   }
   
-  
+  //Take the index of the first max value in array
+  let mostVoted = vote.indexOf(Math.max(...vote));
   
 
   
   return (
     <>
-    <div>
-      {anecdotes[selected]}
-    </div>
+    <Display title={"Anecdote of the day"} anectdote={anecdotes[selected]} />
     <Button text={"Vote"} handleClick={handleVotes} />
     <Button text={"Next anecdotes"} handleClick={ramdomAnecdotes} />
     <p>{`The history ${selected} has ${vote[selected]} votes.`}</p>
+    <hr></hr>
+    <Display title={"Anecdote with most votes"} anectdote={anecdotes[mostVoted]} />
     </>
   )
 }
