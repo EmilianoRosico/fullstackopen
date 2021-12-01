@@ -3,15 +3,33 @@ import ReactDOM from 'react-dom'
 import Button from "./Button"
 
 const App = ({anecdotes}) => {
+  //useState declaration
   const [selected, setSelected] = useState(0)
-  const ramdomAnecdotes = () => {setSelected(Math.floor(Math.random() * 7))}
+  const [vote, setVote] = useState([0,0,0,0,0,0])
 
+  //Handle function
+  const ramdomAnecdotes = () => {setSelected(Math.floor(Math.random() * 6))}
+  const handleVotes = () => {
+  
+  //Variable used to read the array counter
+  let a = [...vote]
+  //increse in 1 the voted story 
+  a[selected]+=1
+  setVote(a)
+  }
+  
+  
+  
+
+  
   return (
     <>
     <div>
       {anecdotes[selected]}
     </div>
+    <Button text={"Vote"} handleClick={handleVotes} />
     <Button text={"Next anecdotes"} handleClick={ramdomAnecdotes} />
+    <p>{`The history ${selected} has ${vote[selected]} votes.`}</p>
     </>
   )
 }
