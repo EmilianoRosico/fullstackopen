@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-/*
+
 const Total = ({ course }) => {
-  const sum = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises
+  const sum = course.parts.reduce((sum,b) => sum + b.exercises,0);
   return(
-    <p>Number of exercises {sum}</p>
+    <p>Total of exercises {sum}</p>
   ) 
 }
-*/
+
 
 const Content = ({ course }) => {
   return (
@@ -24,6 +24,8 @@ const Course = ({course}) => {
     <>
     <h1>{course.name}</h1>
     <Content course={course} />
+    <hr></hr>
+    <Total course={course} />
     </>
   )
 }
@@ -47,6 +49,11 @@ const App = () => {
         name: 'State of a component',
         exercises: 14,
         id: 3,
+      },
+      {
+        name: 'Redux',
+        exercises: 11,
+        id: 4,
       },
     ],
   }
